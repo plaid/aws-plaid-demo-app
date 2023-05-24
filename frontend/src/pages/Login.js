@@ -36,7 +36,7 @@ export default function Login() {
 
   return (
     <View className="auth-wrapper">
-      <Authenticator components={components}/>
+      <Authenticator components={components} socialProviders={['google']}/>
     </View>
   );
 }
