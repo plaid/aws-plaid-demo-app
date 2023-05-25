@@ -3,6 +3,9 @@ import { useAuthenticator, View } from '@aws-amplify/ui-react';
 import { useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router';
 
+import { Amplify, Auth, Hub } from 'aws-amplify';
+import { CognitoHostedUIIdentityProvider } from '@aws-amplify/auth';
+
 export default function Login() {
   const { route } = useAuthenticator((context) => [context.route]);
   const location = useLocation();
@@ -14,6 +17,7 @@ export default function Login() {
       Footer() {
         return (
           <View textAlign="center">
+            <button onClick={() => Auth.federatedSignIn({provider: CognitoHostedUIIdentityProvider.Google })}>Open Google</button>
             <strong>Password Policy</strong>:
             <ul>
               <li>Minimum of 8 characters</li>
