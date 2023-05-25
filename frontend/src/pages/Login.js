@@ -10,7 +10,21 @@ export default function Login() {
   const navigate = useNavigate();
   let from = location.state?.from?.pathname || '/';
 
-  
+
+
+  const authConfig = {
+    Auth: {
+      region: process.env.REACT_APP_REGION,
+      userPoolId: process.env.REACT_APP_COGNTIO_USERPOOL_ID,
+      userPoolWebClientId: process.env.REACT_APP_COGNITO_CLIENT_ID,
+      mandatorySignIn: true,
+      oauth: {
+        domain: process.env.REACT_APP_COGNITO_DOMAIN,
+        scope: ['email', 'openid', `${process.env.REACT_APP_BACKEND_URL}/plaid.rw}`],
+        responseType: "code"
+      },
+  },
+  };
 
   const federated = { googleClientId: "705034194853-kht77urbsc6l7evgs7khk48h7lej835f.apps.googleusercontent.com"}
 
@@ -42,7 +56,7 @@ export default function Login() {
 
   return (
     <View className="auth-wrapper">
-      <Authenticator components={components} federated={federated} socialProviders={['google']}/>
+      <Authenticator components={components} amplifyConfig={authConf} federated={federated} socialProviders={['google']}/>
     </View>
   );
 }
