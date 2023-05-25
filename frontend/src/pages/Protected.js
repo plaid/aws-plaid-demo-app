@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { API, graphqlOperation, Logger } from 'aws-amplify';
-import { View, Heading, Flex } from '@aws-amplify/ui-react';
+import { View, Heading, Flex, Menu, MenuItem } from '@aws-amplify/ui-react';
 import { getItems as GetItems } from '../graphql/queries';
 import Plaid from '../components/Plaid';
 import Institutions from '../components/Institutions';
@@ -29,6 +29,11 @@ export default function Protected() {
       <Plaid getItems={getItems}/>
       {(items && items.length) ? (
         <View>
+          <Menu>
+            <MenuItem>Option 1</MenuItem>
+            <MenuItem>Option 2</MenuItem>
+            <MenuItem>Option 3</MenuItem>
+          </Menu>
           <Heading>Institutions</Heading>
           <Institutions institutions={items}/>
         </View>
