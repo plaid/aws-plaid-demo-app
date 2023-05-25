@@ -56,7 +56,7 @@ export default function Login() {
 
   return (
     <View className="auth-wrapper">
-      <Authenticator components={components} amplifyConfig={authConf} federated={federated} socialProviders={['google']}/>
+      <Authenticator components={components} amplifyConfig={authConfig} federated={federated} socialProviders={['google']}/>
     </View>
   );
 }
