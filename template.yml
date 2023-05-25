@@ -29,7 +29,7 @@ Parameters:
   PlaidEnvironment:
     Type: String
     Description: Plaid Environment
-    Default: sandbox
+    Default: development
     AllowedValues:
       - sandbox
       - development
@@ -38,6 +38,12 @@ Parameters:
     Type: String
     Description: GitHub Personal Access Token
     NoEcho: true
+  GoolgeProviderClientID:
+    Type: String
+    Description: GoogleProviderClientID
+  GoogleProviderClientSecret:
+    Type: String
+    Description: GoogleProviderClientSecret
   BranchName:
     Type: String
     Description: Git branch name
@@ -649,9 +655,6 @@ Resources:
         AllowAdminCreateUserOnly: false
       AutoVerifiedAttributes:
         - email
-      EnabledMfas:
-        - SOFTWARE_TOKEN_MFA
-      MfaConfiguration: "ON"
       Policies:
         PasswordPolicy:
           MinimumLength: 8
@@ -728,6 +731,20 @@ Resources:
         - ScopeDescription: Read/write access
           ScopeName: plaid.rw
       UserPoolId: !Ref CognitoUserPool
+
+  CognitoUserPoolIdentityProvider:
+    Type: AWS::Cognito::UserPoolIdentityProvider
+    Properties: 
+      ProviderName: Google
+      AttributeMapping:
+        email: emailAddress
+      ProviderDetails:
+        client_id: 705034194853-kht77urbsc6l7evgs7khk48h7lej835f.apps.googleusercontent.com
+        client_secret: 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
+        authorize_scopes: email openid
+      ProviderType: Google
+      UserPoolId: 
+        Ref: CognitoUserPool
 
   ApiGatewayAccount:
     Type: "AWS::ApiGateway::Account"
