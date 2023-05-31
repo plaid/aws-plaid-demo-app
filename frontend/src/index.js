@@ -27,8 +27,8 @@ Amplify.configure({
       domain: process.env.REACT_APP_COGNITO_DOMAIN,
       scope: ['openid', 'email', 'profile', 'aws.cognito.signin.user.admin'],
       responseType: 'code',
-      redirectSignIn: 'http://localhost:3000',
-      redirectSignOut: 'http://localhost:3000',
+      redirectSignIn: 'https://monjdg.com',
+      redirectSignOut: 'https://monjdg.com',
     }
   },
   API: {
