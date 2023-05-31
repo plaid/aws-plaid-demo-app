@@ -1,7 +1,7 @@
 
 
 import { createRoot } from 'react-dom/client';
-import { Amplify, Auth } from "aws-amplify";
+import { Amplify, Auth, API } from "aws-amplify";
 import App from './App';
 
 import '@aws-amplify/ui-react/styles.css';
@@ -27,8 +27,8 @@ Amplify.configure({
       domain: process.env.REACT_APP_COGNITO_DOMAIN,
       scope: ['openid', 'email', 'profile', 'aws.cognito.signin.user.admin'],
       responseType: 'code',
-      redirectSignIn: 'https://monjdg.com',
-      redirectSignOut: 'https://monjdg.com',
+      redirectSignIn: 'http://localhost:3000',
+      redirectSignOut: 'http://localhost:3000',
     }
   },
   API: {

@@ -7,6 +7,7 @@ export default function RequireAuth({ children }) {
   const { route } = useAuthenticator((context) => [context.route]);
 
   if (route !== 'authenticated') {
+    console.log("Not authed")
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
