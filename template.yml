@@ -21,15 +21,15 @@ Parameters:
   PlaidClientId:
     Type: String
     Description: Plaid Client ID
-    NoEcho: true
+    Default: 5d7efc48f793f300137e9071
   PlaidSecretKey:
     Type: String
     Description: Plaid Secret Key
-    NoEcho: true
+    Default: 3f2a59848b74435eadf574aedf8fc1
   PlaidEnvironment:
     Type: String
     Description: Plaid Environment
-    Default: development
+    Default: sandbox
     AllowedValues:
       - sandbox
       - development
@@ -37,7 +37,7 @@ Parameters:
   GitHubAccessToken:
     Type: String
     Description: GitHub Personal Access Token
-    NoEcho: true
+    Default: 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
   GoolgeProviderClientID:
     Type: String
     Description: GoogleProviderClientID
@@ -737,14 +737,25 @@ Resources:
     Properties: 
       ProviderName: Google
       AttributeMapping:
-        email: emailAddress
+        email: email
       ProviderDetails:
         client_id: 705034194853-kht77urbsc6l7evgs7khk48h7lej835f.apps.googleusercontent.com
         client_secret: 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
-        authorize_scopes: email openid
+        authorize_scopes: email openid profile
       ProviderType: Google
       UserPoolId: 
         Ref: CognitoUserPool
+
+  # Creates a federeated Identity pool
+  IdentityPool:
+    Type: "AWS::Cognito::IdentityPool"
+    Properties:
+      IdentityPoolName: GoogleIdentity
+      AllowUnauthenticatedIdentities: true
+      CognitoIdentityProviders: 
+        - ClientId: !Ref UserPoolClient
+          ProviderName: !GetAtt CognitoUserPool.ProviderName
+
 
   ApiGatewayAccount:
     Type: "AWS::ApiGateway::Account"
@@ -915,6 +926,7 @@ Resources:
           Value: !Ref GitHubRepo
         - Key: Environment
           Value: !Ref Environment
+
 
   WebhookProcessorFunctionRole:
     Type: "AWS::IAM::Role"

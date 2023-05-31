@@ -36,7 +36,7 @@ export default function Login() {
           <View textAlign="center">
             <strong>Password Policy</strong>:
             <ul>
-              <li>Minimum of 8 characters</li>
+              <li>Minimum of 8 characters.</li>
               <li>At least one lowercase character</li>
               <li>At least one uppercase character</li>
               <li>At least one number character</li>

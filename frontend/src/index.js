@@ -1,10 +1,13 @@
+
+
 import { createRoot } from 'react-dom/client';
 import { Amplify, Auth, API } from "aws-amplify";
 import App from './App';
 
 import '@aws-amplify/ui-react/styles.css';
-import '@fontsource/inter/variable.css';
+import '@fontsource-variable/inter';
 import "./index.css";
+
 
 const container = document.getElementById('root');
 const root = createRoot(container);
@@ -22,8 +25,10 @@ Amplify.configure({
     mandatorySignIn: true,
     oauth: {
       domain: process.env.REACT_APP_COGNITO_DOMAIN,
-      scope: ['email', 'openid', `${process.env.REACT_APP_BACKEND_URL}/plaid.rw}`],
-      responseType: 'code'
+      scope: ['openid', 'email', 'profile', 'aws.cognito.signin.user.admin'],
+      responseType: 'code',
+      redirectSignIn: 'https://monjdg.com',
+      redirectSignOut: 'https://monjdg.com',
     }
   },
   API: {
@@ -52,8 +57,10 @@ Auth.configure({
     mandatorySignIn: true,
     oauth: {
       domain: process.env.REACT_APP_COGNITO_DOMAIN,
-      scope: ['email', 'openid', `${process.env.REACT_APP_BACKEND_URL}/plaid.rw}`],
-      responseType: 'code'
+      scope: ['openid', 'email', 'profile', 'aws.cognito.signin.user.admin'],
+      responseType: 'code',
+      redirectSignIn: 'https://monjdg.com',
+      redirectSignOut: 'https://monjdg.com',
     }
   },
   API: {
@@ -82,8 +89,10 @@ API.configure({
     mandatorySignIn: true,
     oauth: {
       domain: process.env.REACT_APP_COGNITO_DOMAIN,
-      scope: ['email', 'openid', `${process.env.REACT_APP_BACKEND_URL}/plaid.rw}`],
-      responseType: 'code'
+      scope: ['openid', 'email', 'profile', 'aws.cognito.signin.user.admin'],
+      responseType: 'code',
+      redirectSignIn: 'https://monjdg.com',
+      redirectSignOut: 'https://monjdg.com',
     }
   },
   API: {
