@@ -80,7 +80,7 @@ def authorize_request(router: Router) -> str:
     user_id = None
     authorizer: RequestContextV2Authorizer = router.current_event.request_context.authorizer
     if authorizer:
-        user_id = authorizer.jwt_claim.get("sub")
+        user_id = authorizer.jwt_claim.get("username")
 
     if not user_id:
         raise UnauthorizedError("User not found in request")
