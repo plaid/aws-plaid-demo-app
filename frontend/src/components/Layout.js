@@ -1,6 +1,10 @@
 import React from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
-import { useAuthenticator, Button, Heading, View } from '@aws-amplify/ui-react';
+import { useAuthenticator, Button, Heading, View, Badge } from '@aws-amplify/ui-react';
+import Header from './Header';
+import Footer from './Footer';
+
+
 
 export default function Layout() {
   const { route, signOut, user } = useAuthenticator((context) => [
@@ -17,19 +21,16 @@ export default function Layout() {
   return (
     <>
       <nav>
-        <Button onClick={() => navigate('/')}>Home</Button>
-        {route !== 'authenticated' ? (
-          <Button onClick={() => navigate('/login')}>Login</Button>
-        ) : (
-          <Button onClick={() => logOut()}>Logout</Button>
-        )}
+        <Header></Header>
       </nav>
       <Heading level={2}>MonJDG Finance</Heading>
       <View>
-        {route === 'authenticated' ? `Welcome ${user.signInUserSession.idToken.payload.email}` : 'Please Login!'}
+        {route === 'authenticated' ? <Badge>{user.signInUserSession.idToken.payload.email}</Badge> : 'Please Login!'}
       </View>
+      
 
       <Outlet />
+      <Footer></Footer>
     </>
   );
 }
