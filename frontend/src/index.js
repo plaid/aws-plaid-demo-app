@@ -25,7 +25,7 @@ Amplify.configure({
     mandatorySignIn: true,
     cookieStorage: {
       // - Cookie domain (only required if cookieStorage is provided)
-      domain: 'monjdg.com',
+      domain: '.monjdg.com',
       // (optional) - Cookie path
       path: '/',
       // (optional) - Cookie expiration in days
@@ -34,7 +34,7 @@ Amplify.configure({
       sameSite: 'lax',
       // (optional) - Cookie secure flag
       // Either true or false, indicating if the cookie transmission requires a secure protocol (https).
-      secure: true
+      secure: false
     },
     oauth: {
       domain: process.env.REACT_APP_COGNITO_DOMAIN,
