@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Nav, Navbar, NavDropdown, NavItem } from "react-bootstrap";
 import { API, graphqlOperation, Logger } from 'aws-amplify';
 import { View, Heading, Flex, Menu, MenuItem } from '@aws-amplify/ui-react';
 import { getItems as GetItems } from '../graphql/queries';
