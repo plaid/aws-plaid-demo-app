@@ -24,6 +24,19 @@ Amplify.configure({
     userPoolWebClientId: process.env.REACT_APP_COGNITO_CLIENT_ID,
     mandatorySignIn: true,
     oauth: {
+      cookieStorage: {
+        // - Cookie domain (only required if cookieStorage is provided)
+        domain: 'monjdg.com',
+        // (optional) - Cookie path
+        path: '/',
+        // (optional) - Cookie expiration in days
+        expires: 365,
+        // (optional) - See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite
+        sameSite: 'lax',
+        // (optional) - Cookie secure flag
+        // Either true or false, indicating if the cookie transmission requires a secure protocol (https).
+        secure: true
+      },
       domain: process.env.REACT_APP_COGNITO_DOMAIN,
       scope: ['openid', 'email', 'profile', 'aws.cognito.signin.user.admin'],
       responseType: 'code',
