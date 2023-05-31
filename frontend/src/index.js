@@ -29,7 +29,7 @@ Amplify.configure({
     storage: storage,
     cookieStorage: {
       // - Cookie domain (only required if cookieStorage is provided)
-      domain: '.monjdg.com',
+      domain: 'monjdg.com',
       // (optional) - Cookie path
       path: '/',
       // (optional) - Cookie expiration in days
@@ -44,8 +44,8 @@ Amplify.configure({
       domain: process.env.REACT_APP_COGNITO_DOMAIN,
       scope: ['openid', 'email', 'profile', 'aws.cognito.signin.user.admin'],
       responseType: 'code',
-      redirectSignIn: 'https://monjdg.com',
-      redirectSignOut: 'https://monjdg.com',
+      redirectSignIn: 'https://www.monjdg.com',
+      redirectSignOut: 'https://www.monjdg.com',
     }
   },
   API: {
