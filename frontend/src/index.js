@@ -35,10 +35,10 @@ Amplify.configure({
       // (optional) - Cookie expiration in days
       expires: 365,
       // (optional) - See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite
-      sameSite: 'lax',
+      sameSite: 'strict',
       // (optional) - Cookie secure flag
       // Either true or false, indicating if the cookie transmission requires a secure protocol (https).
-      secure: false
+      secure: true
     },
     oauth: {
       domain: process.env.REACT_APP_COGNITO_DOMAIN,
