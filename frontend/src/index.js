@@ -3,10 +3,13 @@
 import { createRoot } from 'react-dom/client';
 import { Amplify, Auth, API } from "aws-amplify";
 import App from './App';
+import { StorageHelper } from '@aws-amplify/core';
 
 import '@aws-amplify/ui-react/styles.css';
 import '@fontsource-variable/inter';
 import "./index.css";
+
+const storage = new StorageHelper().getStorage();
 
 
 const container = document.getElementById('root');
@@ -23,6 +26,7 @@ Amplify.configure({
     userPoolId: process.env.REACT_APP_COGNTIO_USERPOOL_ID,
     userPoolWebClientId: process.env.REACT_APP_COGNITO_CLIENT_ID,
     mandatorySignIn: true,
+    storage: storage,
     cookieStorage: {
       // - Cookie domain (only required if cookieStorage is provided)
       domain: '.monjdg.com',
