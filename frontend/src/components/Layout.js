@@ -29,11 +29,7 @@ export default function Layout() {
       <SideBar />      
       <div className="page-container">
 
-      <Heading level={2}>MonJDG Finance</Heading>
-      <View>
-        {route === 'authenticated' ? <Badge>{user.signInUserSession.idToken.payload.email}</Badge> : 'Please Login!'}
-      </View>
-
+      <Heading level={2}>MonJDG</Heading>
       <Outlet />
       </div>
       <Footer></Footer>

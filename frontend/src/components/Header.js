@@ -38,9 +38,7 @@ export default function Header() {
               </div>
               <span>MonJDG</span>
             </div>  
-            <div className="header-right">
-             <HeaderSearchBar></HeaderSearchBar>
-    
+            <div className="header-right">    
               <HeaderNav />
             </div>
           </Flex>

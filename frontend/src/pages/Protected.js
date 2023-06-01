@@ -29,11 +29,6 @@ export default function Protected() {
       <Plaid getItems={getItems}/>
       {(items && items.length) ? (
         <View>
-          <Menu>
-            <MenuItem>Option 1</MenuItem>
-            <MenuItem>Option 2</MenuItem>
-            <MenuItem>Option 3</MenuItem>
-          </Menu>
           <Heading>Institutions</Heading>
           <Institutions institutions={items}/>
         </View>
