@@ -31,9 +31,9 @@ export default function Layout() {
 
       <Heading level={2}>MonJDG</Heading>
       <Outlet />
-      </div>
-      <Footer></Footer>
+    </div>
     </>
+    <Footer></Footer>
     </div>
   );
 }

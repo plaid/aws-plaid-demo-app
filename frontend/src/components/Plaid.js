@@ -42,13 +42,13 @@ export default function Plaid({ getItems }) {
   };
 
   return (
-    <Flex>
+    <Flex alignContent="center" direction="column">
       <Button
         variation="primary"
         isLoading={connecting}
         onClick={handleGetToken}
       >
-        CONNECT WITH PLAID
+        Connect Financial Institution
       </Button>
       {token ? (
         <PlaidLink

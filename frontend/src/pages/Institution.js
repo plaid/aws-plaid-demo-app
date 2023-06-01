@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
-import { Divider, Flex, Heading, View } from '@aws-amplify/ui-react';
+import { Divider, Flex, Heading, View, Tabs, TabItem } from '@aws-amplify/ui-react';
 import Accounts from '../components/Accounts';
 import Transactions from '../components/Transactions';
 
@@ -24,16 +24,24 @@ export default function Institution() {
       <Flex direction="row">
         <Heading level={5}>Institution</Heading>
       </Flex>
-      <Flex direction="row">
+      <Tabs defaultIndex={1}>
+    <TabItem title="Accounts">
+    <Flex>
         <View>
           <Heading level={6}>Accounts</Heading>
           <Accounts id={id} updateAccounts={updateAccounts}/>
         </View>
-        <View>
+    </Flex>  
+    </TabItem>
+    <TabItem title="Transactions">
+    <Flex>
+    <View>
           <Heading level={6}>Transactions</Heading>
           <Transactions id={id} accounts={accountMap}/>
         </View>
       </Flex>
+    </TabItem>
+  </Tabs>
     </Flex>
   );
 }
