@@ -3,6 +3,8 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import { useAuthenticator, Button, Heading, View, Badge } from '@aws-amplify/ui-react';
 import Header from './Header';
 import Footer from './Footer';
+import SideBar from './SideBar';
+import "./Layout.css";
 
 
 
@@ -19,18 +21,22 @@ export default function Layout() {
     navigate('/login');
   }
   return (
+    <div className="layout-container">
     <>
       <nav>
         <Header></Header>
       </nav>
+      <SideBar />
       <Heading level={2}>MonJDG Finance</Heading>
       <View>
         {route === 'authenticated' ? <Badge>{user.signInUserSession.idToken.payload.email}</Badge> : 'Please Login!'}
       </View>
       
-
+      <div className="page-container">
       <Outlet />
+      </div>
       <Footer></Footer>
     </>
+    </div>
   );
 }

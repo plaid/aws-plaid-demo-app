@@ -1,7 +1,7 @@
 
 
 import { createRoot } from 'react-dom/client';
-import { Amplify, Auth, API } from "aws-amplify";
+import { Amplify, Auth } from "aws-amplify";
 import App from './App';
 import { StorageHelper } from '@aws-amplify/core';
 
