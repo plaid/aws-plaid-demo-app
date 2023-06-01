@@ -21,7 +21,13 @@ export const appNavs = [
       icon: <Icon as={MdDashboard} />,
       title: "Dashboard",
       to: "/",
-    }
+    },
+    {
+        eventKey: "login",
+        icon: <Icon as={MdAccountBox} />,
+        title: "Login",
+        to: "/login",
+      }
   ];
 
 

@@ -37,13 +37,7 @@ export default function Header() {
                 </Link>
               </div>
               <span>MonJDG</span>
-            </div>
-            <Button onClick={() => navigate('/')}>Home</Button>
-        {route !== 'authenticated' ? (
-          <Button onClick={() => navigate('/login')}>Login</Button>
-        ) : (
-          <Button onClick={() => logOut()}>Logout</Button>
-        )}    
+            </div>  
             <div className="header-right">
              <HeaderSearchBar></HeaderSearchBar>
     

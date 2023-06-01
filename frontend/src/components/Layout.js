@@ -26,13 +26,14 @@ export default function Layout() {
       <nav>
         <Header></Header>
       </nav>
-      <SideBar />
+      <SideBar />      
+      <div className="page-container">
+
       <Heading level={2}>MonJDG Finance</Heading>
       <View>
         {route === 'authenticated' ? <Badge>{user.signInUserSession.idToken.payload.email}</Badge> : 'Please Login!'}
       </View>
-      
-      <div className="page-container">
+
       <Outlet />
       </div>
       <Footer></Footer>
