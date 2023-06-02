@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { API, graphqlOperation, Logger } from 'aws-amplify';
 import { View, Heading, Flex, Menu, MenuItem } from '@aws-amplify/ui-react';
 import { getItems as GetItems } from '../graphql/queries';
+import { getAccounts as GetAccounts } from '../graphql/queries';
 import Plaid from '../components/Plaid';
 import Institutions from '../components/Institutions';
 
@@ -13,10 +14,24 @@ export default function Protected() {
   const getItems = async () => {
     try {
       const res = await API.graphql(graphqlOperation(GetItems));
-      logger.info(res);
+
+      res.data.getItems.items.forEach((item) => {
+        getAccounts(item.item_id)
+      });
       setItems(res.data.getItems.items);
     } catch (err) {
       logger.error('unable to get items', err);
+    }
+  }
+
+  const getAccounts = async (id) => {
+    try {
+      const res = await API.graphql(graphqlOperation(GetAccounts, { id }));
+      res.data.getAccounts.forEach((account) => {
+        console.log("Account Balance: "+account.balances.current);
+      });
+    } catch (err) {
+      logger.error('unable to get accounts', err);
     }
   }
 

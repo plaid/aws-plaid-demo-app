@@ -3,7 +3,7 @@ import Institution from './Institution';
 
 export default function Institutions({ institutions = []}) {
   return (
-    <Table highlightOnHover={true} variation="striped">
+    <Table highlightOnHover={false} variation="striped">
       <TableHead>
         <TableRow>
           <TableCell as="th">Name</TableCell>
